@@ -59,7 +59,7 @@ function App() {
           <div
             key={slideIndex}
             onClick={() => goToSlide(slideIndex)}
-            className="text-2xl cursor-pointer"
+            className="text-2xl text-gray-400 cursor-pointer hover:scale-125 hover:text-black"
           >
             <RxDotFilled size={30} />
           </div>
