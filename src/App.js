@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { RxDotFilled } from "react-icons/rx";
 
@@ -23,15 +23,15 @@ function App() {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const isFirstSlide = currentIndex === 0;
+  const isLastSlide = currentIndex === slides.length - 1;
 
   const prevSlide = () => {
-    const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
   };
 
   const nextSlide = () => {
-    const isLastSlide = currentIndex === slides.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
   };
@@ -39,6 +39,13 @@ function App() {
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex);
   };
+
+  useEffect(() => {
+    setInterval(() => {
+      const newIndex = isLastSlide ? 0 : currentIndex + 1;
+      setCurrentIndex(newIndex);
+    }, 3000);
+  }, [currentIndex, isLastSlide]);
 
   return (
     <div className="max-w-[900px] h-[580px] w-full m-auto py-16 px-4 relative group">
