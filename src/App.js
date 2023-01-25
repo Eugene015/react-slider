@@ -40,12 +40,8 @@ function App() {
     setCurrentIndex(slideIndex);
   };
 
-  useEffect(() => {
-    setInterval(() => {
-      const newIndex = isLastSlide ? 0 : currentIndex + 1;
-      setCurrentIndex(newIndex);
-    }, 3000);
-  }, [currentIndex, isLastSlide]);
+  const date = new Date().toISOString();
+  console.log(date);
 
   return (
     <div className="max-w-[900px] h-[580px] w-full m-auto py-16 px-4 relative group">
